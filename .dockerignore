@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Node.js
+**/node_modules
+npm-debug.log
+yarn-error.log
+
+# Client files (not needed for backend)
+client/
+
+# Development files
+**/.env.development
+**/.env.local
+**/.env.test
+**/tests
+**/coverage
+
+# Misc
+.DS_Store
+**/README.md
+**/docs
+
+# Root project files not needed for backend
+/coverage
+/tests
+/docs
+/attached_assets
+/shared 

@@ -1,0 +1,101 @@
+Project Proposal: Property Management App
+
+Purpose
+Build a mobile and web application that enables property managers to integrate listings from major booking
+platforms (e.g., Airbnb, VRBO, Guesty) and manage their inventory, owner billing, and profitability in one
+centralized platform.
+
+Tech Stack
+Frontend: React (with React Native for mobile)
+Backend: Node.js (Express.js)
+Database: MongoDB
+Integrations: Airbnb API, VRBO API, Guesty API (OAuth / Webhooks)
+Authentication: Firebase Auth or Auth0 (optional recommendation)
+Hosting: Vercel (frontend) / Heroku or Render (backend) / MongoDB Atlas
+Notifications: SendGrid (email reports)
+
+Core Features
+- Authentication & Access Control
+- Platform Integrations
+- Listings Management
+- Owners Management
+- Inventory Management (with custom item support)
+- Expense Tracking (with markup and manual entries)
+- Analytics Dashboard
+- Monthly Expense Reporting
+- Mobile App (React Native)
+- Admin Panel (optional)
+
+Inventory Management
+The inventory system will allow:
+- Storing item name, quantity, cost price, vendor, markup %
+
+Project Proposal: Property Management App
+
+- Manual addition of custom inventory items (e.g., one-off purchases)
+- Assigning usage to specific listings
+- Automatically calculating the billed amount using markup
+
+Expense Tracking
+Users can create expense records by selecting inventory used or adding custom expenses manually. Each
+expense record includes:
+- Linked listing and owner
+- Quantity used
+- Cost price, markup %, and final billed amount
+- Notes for manual/custom expenses
+
+Analytics Dashboard
+Includes:
+- Item-level profitability
+- Expense trends per listing and owner
+- Total revenue and profit from inventory markup
+- Alerts for low inventory levels (Phase 2)
+
+Monthly Expense Reporting
+- Automatically generate end-of-month reports
+- Itemized by owner and listing
+- Include inventory used, quantities, costs, and billed amounts
+- Option to manually download or automatically email to each owner
+
+MVP Feature Set (Phase 1)
+- Authentication
+- Airbnb + VRBO integration
+- Listings / Owners / Inventory pages
+
+Project Proposal: Property Management App
+
+- Expense logging (with markup)
+- Basic analytics view
+- Manual and auto-generated monthly PDF reports
+- Mobile app with quick expense/inventory input
+
+User Stories
+- As a property manager, I want to sync all my Airbnb listings so I can manage them from one place.
+- As a user, I want to add and track inventory, including custom one-off items.
+- As a property manager, I want to automatically send monthly expense reports to owners.
+- As a user, I want to see how much profit I made from marked-up inventory.
+
+Database Structure (MongoDB)
+Owners: { _id, name, email, markupPercentage, listings: [ListingID] }
+Listings: { _id, platform, platformId, address, ownerId, synced }
+Inventory: { _id, name, category, costPrice, defaultMarkup, quantity, vendor }
+Expenses: { _id, listingId, ownerId, inventoryId (nullable), quantityUsed, markupPercent, date, totalCost,
+notes }
+
+Timeline Suggestion
+Week 1-2: Auth + MongoDB setup + basic structure
+Week 3-4: Listings/Owners/Inventory CRUD
+Week 5: Expense Portal
+Week 6: Platform integration setup
+Week 7: Analytics Module
+Week 8: Expense Report Generator + Email
+Week 9: Mobile app wrapper
+Week 10: Testing + Deployment
+
+Security / Compliance
+
+Project Proposal: Property Management App
+
+- Secure API access with tokens
+- Rate limiting
+- Encrypted storage for sensitive owner information

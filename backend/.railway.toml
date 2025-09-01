@@ -1,0 +1,23 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npm run build"
+
+[deploy]
+numReplicas = 1
+startCommand = "node dist/cli/init-db.js && node --expose-gc --max-old-space-size=512 dist/index.js"
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+healthcheckPath = "/api/healthcheck"
+healthcheckTimeout = 30
+healthcheckInterval = 60
+healthcheckMethod = "GET"
+
+[variables]
+NODE_ENV = "production"
+FRONTEND_URL = "https://www.propsku.com"
+# Use non-ssl direct connection to Railway Postgres
+PGSSLMODE = "disable"
+
+# Memory settings
+[deploy.envs]
+NODE_OPTIONS = "--max-old-space-size=512"

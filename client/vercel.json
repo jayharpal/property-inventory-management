@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm install && node prepare-for-vercel.js && npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+} 
