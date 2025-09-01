@@ -166,7 +166,7 @@ export default function ExpensesPage() {
       listingId: "",
       inventoryId: "",
       quantityUsed: "2",
-      markupPercent: "18",
+      markupPercent: "15",
       date: new Date(),
       totalCost: "0",
       notes: "",
@@ -184,6 +184,13 @@ export default function ExpensesPage() {
       );
     }
   }, [selectedExpense, isEditMode, editForm]);
+
+  useEffect(() => {
+    form.reset({
+      ...form.getValues(),
+      markupPercent: expenseType === "custom" ? "18" : "15",
+    });
+  }, [expenseType, form]);
 
   // useEffect(() => {
   //   if (selectedExpense && isEditMode) {
@@ -870,7 +877,7 @@ export default function ExpensesPage() {
                       
                       <div className="grid grid-cols-2 gap-4">
                         <FormField
-                          control={editForm.control}
+                          control={form.control}
                           name="markupPercent"
                           render={({ field }) => (
                             <FormItem>
